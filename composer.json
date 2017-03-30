@@ -1,10 +1,7 @@
 {
-    "name": "manish/metafieldfy",
-    "authors": [
-        {
-            "name": "chandraveer singh rathore",
-            "email": "chandraveersingh.90@gmail.com"
-        }
-    ],
-    "require": {}
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=5.3.0",
+		"phpish/shopify": "dev-master"
+	}
 }
