@@ -4,7 +4,7 @@
 	use phpish\shopify;
 
 	require __DIR__.'/conf.php';
-
+	$_GET['signature'] = $_GET['hmac'];
 	# Guard: http://docs.shopify.com/api/authentication/oauth#verification
 	shopify\is_valid_request($_GET, SHOPIFY_APP_SHARED_SECRET) or die('Invalid Request! Request or redirect did not come from Shopify');
 
