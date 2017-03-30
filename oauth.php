@@ -1,7 +1,7 @@
 <?php
 
 	session_start();
-
+	echo __DIR__;
 	require __DIR__.'/vendor/autoload.php';
 	use phpish\shopify;
 
