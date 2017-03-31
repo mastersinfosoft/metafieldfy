@@ -19,6 +19,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   echo '<pre>';
   print_r($_GET);
   echo '</pre>';
+  die();
   $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '$shop'"); //check if the store exists
   print_r($select_store);
   if($select_store->rowCount() > 0){
