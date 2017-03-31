@@ -32,9 +32,9 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       $permissions = json_decode($app_settings->permissions, true);
       //get the permission url
       $permission_url = shopify_api\permission_url(
-          $_GET['shop'], $app_settings->api_key, $permissions
+          $_GET['shop'], $app_settings['api_key'], $permissions
       );
-      echo $permission_url .= '&redirect_uri=' . $app_settings->redirect_url;
+      echo $permission_url .= '&redirect_uri=' . $app_settings['redirect_url'];
 
       header('Location: ' . $permission_url); //redirect to the permission url
   }
