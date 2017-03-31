@@ -30,7 +30,9 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop'];
   $api_key = $app_settings[0]['api_key'];
   $shared_secret = $app_settings[0]['shared_secret'];
-  echo $data = shopify_api\oauth_access_token($shop, $api_key, $shared_secret, $code);
+  $data = shopify_api\oauth_access_token($shop, $api_key, $shared_secret, $code);
+  $delete_query = "delete from tbl_usersettings where store_name = '".$shop."';";
+  $delete_store = $db->query($delete_query);
   $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
   $insert_store = $db->query($insert_query);
   $_SESSION['shop'] = $shop;
