@@ -13,6 +13,8 @@ if($db->connect_errno){
 
 $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
 $app_settings = $select_settings->fetchAll();
+print_r($app_settings);
+die();
 
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
