@@ -38,7 +38,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   
 
 }else{     
-      $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '$shop'"); //check if the store exists
+      $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '".$shop."'"); //check if the store exists
  
       if($select_store->rowCount() > 0){
           
