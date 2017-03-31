@@ -14,7 +14,12 @@ $query = "CREATE TABLE IF NOT EXISTS `tbl_appsettings` (
   `shared_secret` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;"
-$select_settings = $db->exec($query);
+try {
+	$select_settings = $db->exec($query);
+} catch (Exception $e) {
+	echo $e->getmessage();
+}
+
 
 
 ?>
