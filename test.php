@@ -6,7 +6,6 @@ echo 'test first app for shopify';
 // print_r($url);
 include 'config.php';
 echo 'hi';
-die();
 $query = "CREATE TABLE IF NOT EXISTS `tbl_appsettings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `api_key` varchar(300) DEFAULT NULL,
@@ -15,7 +14,7 @@ $query = "CREATE TABLE IF NOT EXISTS `tbl_appsettings` (
   `shared_secret` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;"
-//$select_settings = $db->query($query);
+$select_settings = $db->query($query);
 
 
 ?>
