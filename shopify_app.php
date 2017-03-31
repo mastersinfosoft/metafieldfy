@@ -3,8 +3,7 @@
 require 'vendor/autoload.php';
 use sandeepshetty\shopify_api;
 include 'config.php';
-session_start(); //start a session
-
+session_start(); //start a session_commit()
 
 
 if($db->connect_errno){
@@ -13,8 +12,6 @@ if($db->connect_errno){
 
 $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
 $app_settings = $select_settings->fetchAll();
-print_r($app_settings);
-die();
 
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
@@ -31,15 +28,12 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
   }else{     
       //convert the permissions to an array
-      print_r($app_settings);
-      die();
-      exit();
       $permissions = json_decode($app_settings['permissions'], true);
       //get the permission url
       
       $scope = empty($permissions) ? '' : '&scope='.implode(',', $permissions);
-    $redirect_uri = empty($app_settings['redirect_url']) ? '' : '&redirect_uri='.urlencode($app_settings['redirect_url']);
-    echo $permission_url "https://".$_GET['shop']."/admin/oauth/authorize?client_id=".$app_settings['api_key']."$scope$redirect_uri";
+      $redirect_uri = empty($app_settings['redirect_url']) ? '' : '&redirect_uri='.urlencode($app_settings['redirect_url']);
+      echo $permission_url = "https://".$_GET['shop']."/admin/oauth/authorize?client_id=".$app_settings['api_key']."$scope$redirect_uri";
       //echo $permission_url .= '&redirect_uri=' . $app_settings['redirect_url'];
       die();
       header('Location: ' . $permission_url); //redirect to the permission url
