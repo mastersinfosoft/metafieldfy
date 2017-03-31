@@ -31,10 +31,10 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $api_key = $app_settings[0]['api_key'];
   $shared_secret = $app_settings[0]['shared_secret'];
   echo $data = shopify_api\oauth_access_token($shop, $api_key, $shared_secret, $code);
-  //$insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
-  //$insert_store = $db->query($insert_query);
-  //$_SESSION['shop'] = $shop;
-  //header('Location: https://metafieldfy.herokuapp.com/shopify_testing/admin.php'); //redirect to the admin page
+  $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
+  $insert_store = $db->query($insert_query);
+  $_SESSION['shop'] = $shop;
+  header('Location: https://metafieldfy.herokuapp.com/shopify_testing/admin.php'); //redirect to the admin page
   die();
 
 }else{     
