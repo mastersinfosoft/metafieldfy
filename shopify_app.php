@@ -13,6 +13,7 @@ if($db->connect_errno){
 $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
 $app_settings = $select_settings->fetchAll();
 
+
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
 
@@ -30,7 +31,8 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       //convert the permissions to an array
       $permissions = json_decode($app_settings['permissions'], true);
       //get the permission url
-      
+      print_r($app_settings);
+      die();
       $scope = empty($permissions) ? '' : '&scope='.implode(',', $permissions);
       $redirect_uri = empty($app_settings['redirect_url']) ? '' : '&redirect_uri='.urlencode($app_settings['redirect_url']);
       echo $permission_url = "https://".$_GET['shop']."/admin/oauth/authorize?client_id=".$app_settings['api_key']."$scope$redirect_uri";
