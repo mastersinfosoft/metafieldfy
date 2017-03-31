@@ -36,7 +36,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
       
   }else{
-
+       
   }
 
 }else{     
