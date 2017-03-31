@@ -5,7 +5,7 @@ include 'config.php';
 if(!empty($_GET['shop']) && !empty($_GET['code'])){
 
   $shop = $_GET['shop']; //shop name
-  $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 1");
+  $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
   $app_settings = $select_settings->fetch_object();
 
   //get permanent access token
