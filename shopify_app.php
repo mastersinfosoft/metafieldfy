@@ -16,16 +16,24 @@ $app_settings = $select_settings->fetchAll();
 
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
-  echo '<pre>';
-  print_r($_GET);
-  echo '</pre>';
-  die();
+  
   if(isset($_GET['code'])){
 
   if(!shopify_api\is_valid_request($_GET, $app_settings[0]['shared_secret'])){ //check if its a valid request from Shopify
         echo 'this request not from shopify please check your url';        
         die();
   }
+  $code = $_GET['code'];
+  $shop = $_GET['shop'];
+  $api_key = $app_settings[0]['api_key'];
+  $shared_secret = $app_settings[0]['shared_secret'];
+  $data = shopify_api\oauth_access_token($shop, $api_key, $shared_secret, $code);
+  
+  echo '<pre>';
+  print_r($_GET);
+  print_r($data);
+  echo '</pre>';
+  die();
   $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '$shop'"); //check if the store exists
  
   if($select_store->rowCount() > 0){
@@ -36,7 +44,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
       
   }else{
-       
+
   }
 
 }else{     
