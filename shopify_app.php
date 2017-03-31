@@ -18,7 +18,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
   
   if(isset($_GET['code'])){
-  $_GET['signature']  =  $hmacSignature = "code=".$_GET['code']."&shop=."$_GET['shop']."&timestamp=".$_GET['timestamp'];
+  $_GET['signature']  =  $hmacSignature = "code=".$_GET['code']."&shop=".$_GET['shop']."&timestamp=".$_GET['timestamp'];
  $clientSharedSecret = $app_settings[0]['shared_secret'];
   $calculatedHmac = base64_encode(hash_hmac('sha256', $hmacSignature, $clientSharedSecret, true));
 
