@@ -1,9 +1,9 @@
 <?php
 echo 'test first app for shopify';
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-echo '<pre>';
-echo 'hi';
-print_r($url);
+// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// echo '<pre>';
+// echo 'hi';
+// print_r($url);
 include 'config.php';
 echo 'hi';
 die();
@@ -15,7 +15,7 @@ $query = "CREATE TABLE IF NOT EXISTS `tbl_appsettings` (
   `shared_secret` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;"
-$select_settings = $db->query($query);
+//$select_settings = $db->query($query);
 
 
 ?>
