@@ -1,5 +1,2 @@
 <?php
-$db = new Mysqli;
-$db = mysqli_init();
-$db->ssl_set('key.pem', 'cert.pem', 'ca.pem', null, null);
-$db->real_connect(("us-cdbr-iron-east-03.cleardb.net", "b3bd7eeacd8f20", "71ea49b9", "heroku_30e732ce0560b1b") or die('not able to connect');
+$db = new PDO('mysql:host=o3iyl77734b9n3tg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=k7n3upaig3c8oujw', 'kji1izquolj8c1vp', 'qlss2us74qn5t1qw');
