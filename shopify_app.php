@@ -44,7 +44,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
           
               //$_SESSION['shopify_signature'] = $_GET['signature'];
               $_SESSION['shop'] = $shop;
-              header('Location: https://metafieldfy.herokuapp.com/shopify_testing/admin.php'); //redirect to the admin page
+              header('Location: https://metafieldfy.herokuapp.com/shopify/admin.php'); //redirect to the admin page
           
           
       }else{
