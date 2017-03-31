@@ -16,7 +16,9 @@ $app_settings = $select_settings->fetchAll();
 
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
-
+  echo '<pre>';
+  print_r($_GET);
+  echo '</pre>';
   $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '$shop'"); //check if the store exists
   print_r($select_store);
   if($select_store->rowCount() > 0){
