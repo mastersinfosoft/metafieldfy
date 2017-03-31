@@ -35,7 +35,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
           $_GET['shop'], $app_settings['api_key'], $permissions
       );
       echo $permission_url .= '&redirect_uri=' . $app_settings['redirect_url'];
-
+      die();
       header('Location: ' . $permission_url); //redirect to the permission url
   }
 }
