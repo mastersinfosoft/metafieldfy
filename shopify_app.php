@@ -11,7 +11,7 @@ if($db->connect_errno){
   die('Connect Error: ' . $db->connect_errno);
 }
 
-$select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 1");
+$select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
 $app_settings = $select_settings->fetch_object();
 print_r($app_settings);
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
