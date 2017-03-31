@@ -13,14 +13,13 @@ if($db->connect_errno){
 
 $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
 $app_settings = $select_settings->fetchAll();
-print_r($app_settings);
-die();
+
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
 
   $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '$shop'"); //check if the store exists
   print_r($select_store);
-  if($select_store->num_rows > 0){
+  if($select_store->rowCount() > 0){
       
       if(shopify_api\is_valid_request($_GET, $app_settings->shared_secret)){ //check if its a valid request from Shopify        
           $_SESSION['shopify_signature'] = $_GET['signature'];
