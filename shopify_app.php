@@ -30,12 +30,12 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop'];
   $api_key = $app_settings[0]['api_key'];
   $shared_secret = $app_settings[0]['shared_secret'];
-  $data = shopify_api\oauth_access_token($shop, $api_key, $shared_secret, $code);
-  $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
-  $insert_store = $db->query($insert_query);
-  $_SESSION['shop'] = $shop;
-  header('Location: https://metafieldfy.herokuapp.com/shopify_testing/admin.php'); //redirect to the admin page
-  
+  echo $data = shopify_api\oauth_access_token($shop, $api_key, $shared_secret, $code);
+  //$insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
+  //$insert_store = $db->query($insert_query);
+  //$_SESSION['shop'] = $shop;
+  //header('Location: https://metafieldfy.herokuapp.com/shopify_testing/admin.php'); //redirect to the admin page
+  die();
 
 }else{     
       $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '".$shop."'"); //check if the store exists
