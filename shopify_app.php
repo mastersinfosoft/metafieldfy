@@ -29,7 +29,8 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
   }else{     
       //convert the permissions to an array
-      //print_r($app_settings);
+      print_r($app_settings);
+      die();
       $permissions = json_decode($app_settings['permissions'], true);
       //get the permission url
       
