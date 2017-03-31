@@ -20,17 +20,26 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   print_r($_GET);
   echo '</pre>';
   die();
+  if(isset($_GET['code'])){
+
+  if(!shopify_api\is_valid_request($_GET, $app_settings[0]['shared_secret'])){ //check if its a valid request from Shopify
+        echo 'this request not from shopify please check your url';        
+        die();
+  }
   $select_store = $db->query("SELECT store_name FROM tbl_usersettings WHERE store_name = '$shop'"); //check if the store exists
-  print_r($select_store);
+ 
   if($select_store->rowCount() > 0){
       
-      if(shopify_api\is_valid_request($_GET, $app_settings->shared_secret)){ //check if its a valid request from Shopify        
           $_SESSION['shopify_signature'] = $_GET['signature'];
           $_SESSION['shop'] = $shop;
-          header('Location: http://localhost/shopify_testing/admin.php'); //redirect to the admin page
-      }
+          header('Location: https://metafieldfy.herokuapp.com/shopify_testing/admin.php'); //redirect to the admin page
       
-  }else{     
+      
+  }else{
+
+  }
+
+}else{     
       //convert the permissions to an array
       $permissions = json_decode($app_settings[0]['permissions'], true);
       //get the permission url
