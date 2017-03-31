@@ -35,7 +35,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
       $scope = empty($permissions) ? '' : '&scope='.implode(',', $permissions);
     $redirect_uri = empty($app_settings['redirect_url']) ? '' : '&redirect_uri='.urlencode($app_settings['redirect_url']);
-    return "https://".$_GET['shop']."/admin/oauth/authorize?client_id=".$app_settings['api_key']."$scope$redirect_uri";
+    echo $permission_url "https://".$_GET['shop']."/admin/oauth/authorize?client_id=".$app_settings['api_key']."$scope$redirect_uri";
       //echo $permission_url .= '&redirect_uri=' . $app_settings['redirect_url'];
       die();
       header('Location: ' . $permission_url); //redirect to the permission url
