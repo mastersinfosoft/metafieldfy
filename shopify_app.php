@@ -1,9 +1,9 @@
 <?php
-
+session_start();
 require 'vendor/autoload.php';
 use sandeepshetty\shopify_api;
 include 'config.php';
-session_start(); //start a session_commit()
+ //start a session_commit()
 
 
 if($db->connect_errno){
