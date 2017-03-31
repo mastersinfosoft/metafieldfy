@@ -18,7 +18,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $shop = $_GET['shop']; //shop-name.myshopify.com
   
   if(isset($_GET['code'])){
-
+  $_GET['signature']  =  $_GET['hmac'];
   if(!shopify_api\is_valid_request($_GET, $app_settings[0]['shared_secret'])){ //check if its a valid request from Shopify
         echo 'this request not from shopify please check your url';        
         die();
