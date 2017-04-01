@@ -36,7 +36,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $delete_store = $db->query($delete_query);
   $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
   $insert_store = $db->query($insert_query);
-  $responce = call_unbstall($shop,$data);
+  //$responce = call_unbstall($shop,$data);
   print_r($responce);
 
   $_SESSION['shop'] = $shop;
