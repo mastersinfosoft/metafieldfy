@@ -42,7 +42,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $url = 'https://'.$shop.'/admin/webhooks.json';
   $method = 'POST';
   $params = array('format' => "json",
-     'address' => "https://metafieldfy.herokuapp.com/shopify/uninstall.php");
+     'address' => "https://metafieldfy.herokuapp.com/shopify/unstall.php");
   $params['topic'] = 'app/uninstalled';
 
   $query = in_array($method, array('GET','DELETE')) ? $params : array();
@@ -51,7 +51,9 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $request_headers = array();
   array_push($request_headers, "X-Shopify-Access-Token: $data");
   if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
-  return _api($method, $url, $query, $payload, $request_headers, $response_headers);
+  $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
+  print_r($responce);
+  die();
   $_SESSION['shop'] = $shop;
   header('Location: https://metafieldfy.herokuapp.com/shopify/admin.php'); //redirect to the admin page
   die();
