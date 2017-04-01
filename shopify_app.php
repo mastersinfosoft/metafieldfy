@@ -13,8 +13,6 @@ if($db->connect_errno){
 $select_settings = $db->query("SELECT * FROM tbl_appsettings WHERE id = 2");
 $app_settings = $select_settings->fetchAll();
 
-echo '<pre>';
-print_r($_REQUEST);
 
 
 if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
@@ -38,22 +36,9 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $delete_store = $db->query($delete_query);
   $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
   $insert_store = $db->query($insert_query);
-  ///admin/webhooks.json
-  $url = 'https://'.$shop.'/admin/webhooks.json';
-  $method = 'POST';
-  $params = array('format' => "json",
-     'address' => "https://metafieldfy.herokuapp.com/shopify/unstall.php");
-  $params['topic'] = 'app/uninstalled';
-
-  $query = in_array($method, array('GET','DELETE')) ? $params : array();
-  $payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
-
-  $request_headers = array();
-  array_push($request_headers, "X-Shopify-Access-Token: $data");
-  if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
-  $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
+  
   print_r($responce);
-  die();
+
   $_SESSION['shop'] = $shop;
   header('Location: https://metafieldfy.herokuapp.com/shopify/admin.php'); //redirect to the admin page
   die();
@@ -79,4 +64,23 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       }
       
   }
+}
+
+function call_unbstall($shop,$data){
+///admin/webhooks.json
+  $url = 'https://'.$shop.'/admin/webhooks.json';
+  $method = 'POST';
+  $params = array('format' => "json",
+     'address' => "https://metafieldfy.herokuapp.com/shopify/unstall.php");
+  $params['topic'] = 'app/uninstalled';
+
+  $query = in_array($method, array('GET','DELETE')) ? $params : array();
+  $payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
+
+  $request_headers = array();
+  array_push($request_headers, "X-Shopify-Access-Token: $data");
+  if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
+  return $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
+
+
 }
