@@ -36,9 +36,9 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $delete_store = $db->query($delete_query);
   $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
   $insert_store = $db->query($insert_query);
-  //$responce = call_unbstall($shop,$data);
+  $responce = call_unbstall($shop,$data);
   print_r($responce);
-
+  die();
   $_SESSION['shop'] = $shop;
   header('Location: https://metafieldfy.herokuapp.com/shopify/admin.php'); //redirect to the admin page
   die();
@@ -79,8 +79,10 @@ function call_unbstall($shop,$data){
 
   $request_headers = array();
   array_push($request_headers, "X-Shopify-Access-Token: $data");
+
   if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
-  return $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
+   print_r($request_headers);
+  //return $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
 
 
 }
