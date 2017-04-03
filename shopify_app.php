@@ -65,7 +65,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
   }
 }
-function register_unstall_webhook($shop,$token){
+/*function register_unstall_webhook($shop,$token){
     $url = 'https://'.$shop.'/admin/webhooks.json';
     $method = 'POST';
     $param = array('format' => "json",
@@ -80,9 +80,11 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
     'Content-Type: application/json', 
-    "X-Shopify-Access-Token: $data"                                                                     
+    "X-Shopify-Access-Token: $data",                                                                     
 );                                                                                                                   
                                                                                                                      
 return $result = curl_exec($ch);
 
-}
+}*/
+
+
