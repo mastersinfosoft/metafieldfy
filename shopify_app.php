@@ -66,7 +66,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   }
 }
 
-function call_unbstall($shop,$data){
+function call_unbstall($shop,$data, $key, $secrt){
 ///admin/webhooks.json
   $url = 'https://'.$shop.'/admin/webhooks.json';
   $method = 'POST';
@@ -83,7 +83,13 @@ function call_unbstall($shop,$data){
   if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
    print_r($payload); 
    print_r($request_headers);
-return $responce = shopify_api\_api($method, $url, $query, $payload, $request_headers, &$response_headers=array());
+   $shopify = shopify\client($shop, $key, $secrt, true);
+
+$responce = $shopify('POST', '/admin/webhooks.json', array(), array
+        (
+            'webook' => $param
+
+        ));
 
 
 }
