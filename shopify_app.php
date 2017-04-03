@@ -2,7 +2,6 @@
 session_start();
 require 'vendor/autoload.php';
 use sandeepshetty\shopify_api;
-use phpish\http;
 include 'config.php';
  //start a session_commit()
 
@@ -83,7 +82,7 @@ function call_unbstall($shop,$data){
 
   if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
    print_r($request_headers);
-  return $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
+  return $responce = shopify_api\_api($method, $url, $query, $payload, $request_headers, $response_headers);
 
 
 }
