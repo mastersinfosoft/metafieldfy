@@ -81,7 +81,8 @@ function call_unbstall($shop,$data){
   array_push($request_headers, "X-Shopify-Access-Token: $data");
 
   if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
-   print_r($params); print_r($request_headers);
+   print_r($params); 
+   print_r($request_headers);
   return $responce = shopify_api\_api($method, $url, $query, $payload, $request_headers, &$response_headers=array());
 
 
