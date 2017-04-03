@@ -36,7 +36,7 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $delete_store = $db->query($delete_query);
   $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
   $insert_store = $db->query($insert_query);
-  $responce = call_unbstall($shop,$data);
+  $responce = register_unstall_webhook($shop,$data);
   print_r($responce);
   die();
   $_SESSION['shop'] = $shop;
@@ -65,31 +65,24 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
       
   }
 }
-
-function call_unbstall($shop,$data, $key, $secrt){
-///admin/webhooks.json
-  $url = 'https://'.$shop.'/admin/webhooks.json';
-  $method = 'POST';
-  $param = array('format' => "json",
+function register_unstall_webhook($shop,$token){
+    $url = 'https://'.$shop.'/admin/webhooks.json';
+    $method = 'POST';
+    $param = array('format' => "json",
      'address' => "https://metafieldfy.herokuapp.com/shopify/unstall.php");
-  $param['topic'] = 'app/uninstalled';
-  $params = array('webhook'=>$param);
-  $query = in_array($method, array('GET','DELETE')) ? $params : array();
-  $payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
-
-  $request_headers = array();
-  array_push($request_headers, "X-Shopify-Access-Token: $data");
-
-  if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
-   print_r($payload); 
-   print_r($request_headers);
-   $shopify = shopify\client($shop, $key, $secrt, true);
-
-/*$responce = $shopify('POST', '/admin/webhooks.json', array(), array
-        (
-            'webook' => $param
-
-        ), $request_headers,);
-*/
+    $param['topic'] = 'app/uninstalled';
+    $params = array('webhook'=>$param);                                                                  
+$data_string = json_encode($params);                                                                                   
+                                                                                                                     
+$ch = curl_init($url);                                                                      
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+    'Content-Type: application/json', 
+    "X-Shopify-Access-Token: $data"                                                                     
+);                                                                                                                   
+                                                                                                                     
+return $result = curl_exec($ch);
 
 }
