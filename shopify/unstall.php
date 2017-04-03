@@ -4,6 +4,7 @@ foreach ($_REQUEST as $key => $value) {
 	$responce .= " $key => $value \n";
 }
 mail('chandraveersingh.90@gmail.com',"testing", $responce);
+echo 'dsfdf';
 error_log("hello, this is a test!");
 echo $responce;
 $handle = fopen("unstalllog.txt", "w");
