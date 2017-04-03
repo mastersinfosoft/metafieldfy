@@ -73,7 +73,7 @@ function call_unbstall($shop,$data){
   $param = array('format' => "json",
      'address' => "https://metafieldfy.herokuapp.com/shopify/unstall.php");
   $param['topic'] = 'app/uninstalled';
-  $params = array('webook'=>$param);
+  $params = array('webhook'=>$param);
   $query = in_array($method, array('GET','DELETE')) ? $params : array();
   $payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
 
