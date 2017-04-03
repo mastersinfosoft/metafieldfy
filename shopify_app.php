@@ -74,15 +74,7 @@ function register_unstall_webhook($shop,$token){
     $params = array('webhook'=>$param);                                                                  
 $data_string = json_encode($params);                                                                                   
                                                                                                                      
-$ch = curl_init($url);                                                                      
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
-    'Content-Type: application/json', 
-    'X-Shopify-Access-Token: '.$token,                                                                     
-);                                                                                                                   
-$result = curl_exec($ch);
+
 
 }
 
