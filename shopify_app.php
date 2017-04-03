@@ -70,10 +70,10 @@ function call_unbstall($shop,$data){
 ///admin/webhooks.json
   $url = 'https://'.$shop.'/admin/webhooks.json';
   $method = 'POST';
-  $params = array('format' => "json",
+  $param = array('format' => "json",
      'address' => "https://metafieldfy.herokuapp.com/shopify/unstall.php");
-  $params['topic'] = 'app/uninstalled';
-
+  $param['topic'] = 'app/uninstalled';
+  $params = array('webook'=>$param);
   $query = in_array($method, array('GET','DELETE')) ? $params : array();
   $payload = in_array($method, array('POST','PUT')) ? stripslashes(json_encode($params)) : array();
 
@@ -82,7 +82,7 @@ function call_unbstall($shop,$data){
 
   if (in_array($method, array('POST','PUT'))) array_push($request_headers, "Content-Type: application/json; charset=utf-8");
    print_r($request_headers);
-  //return $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
+  return $responce = _api($method, $url, $query, $payload, $request_headers, $response_headers);
 
 
 }
