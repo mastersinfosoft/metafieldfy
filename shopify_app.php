@@ -2,6 +2,7 @@
 session_start();
 require 'vendor/autoload.php';
 use sandeepshetty\shopify_api;
+use phpish\http;
 include 'config.php';
  //start a session_commit()
 
