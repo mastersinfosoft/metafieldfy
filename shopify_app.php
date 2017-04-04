@@ -37,9 +37,8 @@ if(!empty($_GET['shop'])){ //check if the shop name is passed in the URL
   $insert_query = "insert into tbl_usersettings (access_token, store_name, code) values('".$data."', '".$shop."','".$code."')";
   $insert_store = $db->query($insert_query);
   $responce = register_unstall_webhook($shop,$data);
-  print_r($responce);
-  die();
   $_SESSION['shop'] = $shop;
+  $_SESSION['token'] = $data;
   header('Location: https://metafieldfy.herokuapp.com/shopify/admin.php'); //redirect to the admin page
   die();
 
