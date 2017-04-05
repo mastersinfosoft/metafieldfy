@@ -5,7 +5,7 @@ if(isset($_SESSION['shop']) && $_SESSION['shop'] != ''){
 $select_admin = $db->query("SELECT * FROM tbl_usersettings WHERE store_name = '".$_SESSION['shop']."'"); //check if the store exists
 $shopdata =  $select_admin->fetchAll();
 echo '<pre>';
-print_r($shopdata);
+print_r($shopdata[0]['access_token']);
 echo '</pre>';
 }
 

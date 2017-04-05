@@ -18,7 +18,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-
 $result = curl_exec($ch);
 return $result;
 }
-$unstall_data = get_unstall_webhook($shopdata[0]['store_name'],$shopdata[0]['access_token']));
+$unstall_data = get_unstall_webhook($shopdata[0]['store_name'],$shopdata[0]['access_token']);
 $unstall_data_array = json_decode($unstall_data);
 echo '<pre>';
 print_r($unstall_data);
