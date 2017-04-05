@@ -1,3 +1,7 @@
+<?php 
+include 'config.php';
+require 'vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +20,14 @@
 			
 			<?php include 'sidebar.php';?>
 		</div>
-		<div class="col-sm-9 col-md-9">Working area</div>
+		<div class="col-sm-9 col-md-9">
+		<?php
+			echo '<pre>';
+			print_r($_SESSION);
+			echo '</pre>';
+		?>
+			
+		</div>
 		<div></div>
 	</div>
 </div>
