@@ -1,6 +1,11 @@
 <?php 
 include '../config.php';
 require '../vendor/autoload.php';
+
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,11 +26,7 @@ require '../vendor/autoload.php';
 			<?php include 'sidebar.php';?>
 		</div>
 		<div class="col-sm-9 col-md-9">
-		<?php
-			echo '<pre>';
-			print_r($_SESSION);
-			echo '</pre>';
-		?>
+		
 			
 		</div>
 		<div></div>
