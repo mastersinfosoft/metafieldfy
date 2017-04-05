@@ -8,8 +8,7 @@ function get_unstall_webhook($shop,$token){
      'address' => 'https://metafieldfy.herokuapp.com/shopify/unstall.php');
     $param['topic'] = 'app/uninstalled';
     $params = array('webhook'=>$param);                                                                  
-$data_string = json_encode($params);                                                                                   
-                                                                                                                     
+$data_string = json_encode($params);                                                                                                                   
 $ch = curl_init();               
 curl_setopt($ch, CURLOPT_URL, $url);                                                       
 curl_setopt($s,CURLOPT_POST,false);                                                                     
@@ -19,7 +18,11 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-
 $result = curl_exec($ch);
 return $result;
 }
-print_r(get_unstall_webhook($shopdata[0]['store_name'],$shopdata[0]['access_token']));
+$unstall_data = get_unstall_webhook($shopdata[0]['store_name'],$shopdata[0]['access_token']));
+$unstall_data_array = json_decode($unstall_data);
+echo '<pre>';
+print_r($unstall_data);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
