@@ -20,9 +20,9 @@ return $result;
 }
 $unstall_data = get_unstall_webhook($shopdata[0]['store_name'],$shopdata[0]['access_token']);
 $unstall_data_array = json_decode($unstall_data);
-if(!is_array($unstall_data_array)){
-    header("Location: https://metafieldfy.herokuapp.com/shopify_app.php");
-}
+echo '<pre>';
+print_r($unstall_data_array);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
