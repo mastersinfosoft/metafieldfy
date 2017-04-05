@@ -13,10 +13,9 @@
 	<h2>Product Metafields for Shopify</h2>
 	<div class="row">
 		<div class="col-sm-3 col-md-3">
-			
 			<?php include 'sidebar.php';?>
 		</div>
-		<div class="col-sm-9 col-md-9">Working area</div>
+		<div class="col-sm-9 col-md-9"></div>
 		<div></div>
 	</div>
 </div>
