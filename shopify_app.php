@@ -1,8 +1,8 @@
 <?php
-session_start();
+include 'config.php';
 require 'vendor/autoload.php';
 use sandeepshetty\shopify_api;
-include 'config.php';
+
  //start a session_commit()
 
 
