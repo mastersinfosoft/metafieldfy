@@ -46,7 +46,13 @@ if (!is_array($unstall_data_array)) {
 			<?php include 'sidebar.php';?>
 		</div>
 		<div class="col-sm-9 col-md-9">
-		
+		<?php 
+                $all_metafields = get_all_metafields($shopdata[0]['store_name'], $shopdata[0]['access_token']);
+                echo '<pre>';
+                print_r($all_metafields);
+                echo '</pre>';
+                
+                ?>
 			
 		</div>
 		<div></div>

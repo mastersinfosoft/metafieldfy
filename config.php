@@ -8,7 +8,7 @@ if (isset($_SESSION['shop']) && $_SESSION['shop'] != '') {
 }
 
 function get_all_metafields($shop, $token) {
-    $url = 'https://' . $shop . '/admin/webhooks.json';
+    $url = 'https://' . $shop . '/admin/metafields.json';
     $method = 'GET';
 //    $param = array('format' => 'json',
 //     'address' => 'https://metafieldfy.herokuapp.com/shopify/unstall.php');
