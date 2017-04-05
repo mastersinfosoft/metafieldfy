@@ -1,6 +1,6 @@
 <?php 
-include 'config.php';
-require 'vendor/autoload.php';
+include '../config.php';
+require '../vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@ require 'vendor/autoload.php';
 		<div class="col-sm-9 col-md-9">
 		<?php
 			echo '<pre>';
-			//print_r($_SESSION);
+			print_r($_SESSION);
 			echo '</pre>';
 		?>
 			
