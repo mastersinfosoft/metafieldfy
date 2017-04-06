@@ -52,7 +52,7 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
                     <?php include 'sidebar.php'; ?>
                 </div>
                 <div class="col-sm-9 col-md-9">
-                    <form>
+                    <form method="post">
                         <input type="hidden" value="masterfields" name="namespace">
                         <div class="form-group">
                             <label for="email">Key:</label>
