@@ -9,6 +9,11 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //    $delete_store = $db->query($delete_query);
 //    header("Location: https://metafieldfy.herokuapp.com/shopify_app.php");
 //}
+$productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
+$product = (array) json_decode($productjson);
+echo '<pre>';
+print_r($product);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>

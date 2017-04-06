@@ -78,6 +78,21 @@ function get_all_products($shop, $token, $fields='') {
     $result = curl_exec($ch);
     return $result;
 }
+function get_products($shop, $token, $id,$fields='') {
+    $url = 'https://' . $shop . '/admin/products/'.$id.'.json';
+    if($fields != ''){
+        $url .= "?fields=".$fields;
+    }
+    $method = 'GET';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($s, CURLOPT_POST, false);
+//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
+    $result = curl_exec($ch);
+    return $result;
+}
 
     
 /*
