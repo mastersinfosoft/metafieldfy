@@ -1,15 +1,3 @@
-<?php 
-include '../config.php';
-require '../vendor/autoload.php';
-
-$unstall_data = get_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']);
-$unstall_data_array = (array)json_decode($unstall_data);
-//if (!is_array($unstall_data_array)) {
-//    $delete_query = "delete from tbl_usersettings where store_name = '" . $shop . "';";
-//    $delete_store = $db->query($delete_query);
-//    header("Location: https://metafieldfy.herokuapp.com/shopify_app.php");
-//}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,21 +13,9 @@ $unstall_data_array = (array)json_decode($unstall_data);
 	<h2>Product Metafields for Shopify</h2>
 	<div class="row">
 		<div class="col-sm-3 col-md-3">
-			
 			<?php include 'sidebar.php';?>
 		</div>
-		<div class="col-sm-9 col-md-9">
-		<?php 
-                $all_metafields = get_all_metafields($shopdata[0]['store_name'], $shopdata[0]['access_token']);
-                echo '<pre>';
-                print_r($all_metafields);
-                print_r($unstall_data_array);
-                //print_r(register_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']));
-                echo '</pre>';
-                
-                ?>
-			
-		</div>
+		<div class="col-sm-9 col-md-9"></div>
 		<div></div>
 	</div>
 </div>
