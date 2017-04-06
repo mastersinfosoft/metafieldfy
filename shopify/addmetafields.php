@@ -24,8 +24,10 @@ require '../vendor/autoload.php';
                     $products_json = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], "id,images,title");
                     echo '<pre>weqwe';
                     print_r((array) json_decode($products_json));
-                    echo '</pre>';
+                   
                     $products = (array) json_decode($products_json);
+                    print_r($products[0]);
+                    echo '</pre>';
                     ?>
                     <table class="table">
                         <thead>
