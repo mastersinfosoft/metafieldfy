@@ -43,7 +43,7 @@ echo '</pre>';
     </head>
     <body>
         <div class="container">
-            <h2>Product Metafields for Shopify</h2>
+            <h2>Metafields for <?php $product['product']->title ?></h2>
             <div class="row">
                 <div class="col-sm-3 col-md-3">
 
