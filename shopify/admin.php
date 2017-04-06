@@ -3,7 +3,7 @@ include '../config.php';
 require '../vendor/autoload.php';
 
 $unstall_data = get_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']);
-$unstall_data_array = json_decode($unstall_data);
+$unstall_data_array = (array)json_decode($unstall_data);
 //if (!is_array($unstall_data_array)) {
 //    $delete_query = "delete from tbl_usersettings where store_name = '" . $shop . "';";
 //    $delete_store = $db->query($delete_query);
