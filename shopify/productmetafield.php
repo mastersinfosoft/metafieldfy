@@ -12,10 +12,19 @@ $unstall_data_array = (array) json_decode($unstall_data);
 $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 $product = (array) json_decode($productjson);
 if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
-    echo '<pre>';
+    
+    $data = array(
+        'namespace' => isset($_POST['namespace'])?$_POST['namespace']:'',
+        'key' => isset($_POST['key'])?$_POST['key']:'',
+        'value_type' => isset($_POST['value_type'])?($_POST['value_type']=='html')?'string':$_POST['value_type']:'',
+        'value' => isset($_POST['fvalue'])?$_POST['fvalue']:'',
+        
+    );
+    $responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
+}   echo '<pre>';
     print_r($_POST);
+    print_r($responce);
     echo '</pre>';
-}
 ?>
 <!DOCTYPE html>
 <html>
