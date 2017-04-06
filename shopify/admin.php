@@ -1,23 +1,6 @@
 <?php 
 include '../config.php';
 require '../vendor/autoload.php';
-function get_unstall_webhook($shop, $token) {
-    $url = 'https://' . $shop . '/admin/webhooks.json';
-    $method = 'GET';
-    $param = array('format' => 'json',
-        'address' => 'https://metafieldfy.herokuapp.com/shopify/unstall.php');
-    $param['topic'] = 'app/uninstalled';
-    $params = array('webhook' => $param);
-    $data_string = json_encode($params);
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($s, CURLOPT_POST, false);
-//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
-    $result = curl_exec($ch);
-    return $result;
-}
 
 //$unstall_data = get_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']);
 //$unstall_data_array = json_decode($unstall_data);
@@ -51,6 +34,7 @@ function get_unstall_webhook($shop, $token) {
                 echo '<pre>';
                 print_r($all_metafields);
                 print_r($_SESSION);
+                print_r(register_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']));
                 echo '</pre>';
                 
                 ?>
