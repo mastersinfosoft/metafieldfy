@@ -119,11 +119,11 @@ echo '</pre>';
                             <legend>New Field</legend>
                             <div class="form-group">
                                 <label for="email">Key:</label>
-                                <input type="text" class="form-control" name="key" id="key_new">
+                                <input type="text" class="form-control" name="key['new']" id="key_new">
                             </div>
                             <div class="form-group">
                                 <label for="email">Type:</label>
-                                <select type="text" class="form-control" name="value_type" id="value_type_new">
+                                <select type="text" class="form-control" name="value_type['new']" id="value_type_new">
                                     <option value="html">Html</option>
                                     <option value="string">text</option>
                                     <option value="integer">Numbers</option>
@@ -131,7 +131,7 @@ echo '</pre>';
                             </div>
                             <div class="form-group">
                                 <label for="email">Value:</label>
-                                <textarea class="form-control jqte-test" name="fvalue" id="fvalue_new"></textarea>
+                                <textarea class="form-control jqte-test" name="fvalue['new']" id="fvalue_new"></textarea>
                             </div>
                         </fieldset>
                         <div class="form-group">
