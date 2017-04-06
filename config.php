@@ -80,3 +80,29 @@ function get_all_products($shop, $token, $fields='') {
 }
 
     
+/*
+ * {
+  "metafield": {
+    "namespace": "inventory",
+    "key": "warehouse",
+    "value": 25,
+    "value_type": "integer"
+  }
+}
+ */
+
+function add_metafield($shop, $token, $type, $id, $data=array()) {
+    $url = 'https://' . $shop . '/admin/'.$type.'/'.$id.'/metafields.json';
+    $method = 'POST';
+    $params = array('metafield' => $data);
+    $data_string = json_encode($params);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($s, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
+    $result = curl_exec($ch);
+    return $result;
+}
