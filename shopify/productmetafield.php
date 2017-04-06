@@ -11,23 +11,25 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //}
 $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 $product = (array) json_decode($productjson);
-if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
-    
+if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
+
     $data = array(
-        'namespace' => isset($_POST['namespace'])?$_POST['namespace']:'',
-        'key' => isset($_POST['key'])?$_POST['key']:'',
-        'value_type' => isset($_POST['value_type'])?($_POST['value_type']=='html')?'string':$_POST['value_type']:'',
-        'value' => isset($_POST['fvalue'])?$_POST['fvalue']:'',
-        
+        'namespace' => isset($_POST['namespace']) ? $_POST['namespace'] : '',
+        'key' => isset($_POST['key']) ? $_POST['key'] : '',
+        'value_type' => isset($_POST['value_type']) ? ($_POST['value_type'] == 'html') ? 'string' : $_POST['value_type'] : '',
+        'value' => isset($_POST['fvalue']) ? $_POST['fvalue'] : '',
     );
     $responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
     echo '<pre>';
     print_r($_POST);
     print_r($responce);
     echo '</pre>';
-} 
+}
 $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id']);
 $metafields = json_decode($metafields_json);
+echo '<pre>';
+print_r($metafields);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,16 +43,17 @@ $metafields = json_decode($metafields_json);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="jquery-te-1.4.0.min.js" charset="utf-8"></script>
         <script type="text/javascript">
-            $('document').ready(function(){
+            $('document').ready(function () {
                 $('.jqte-test').jqte();
-                $("#value_type").change(function()
-                {       if($(this).val() == 'html'){
-                            jqteStatus = true;
-                        }else{
-                            jqteStatus = false;
-                        }
-                        //jqteStatus = jqteStatus ? false : true;
-                        $('#fvalue.jqte-test').jqte({"status" : jqteStatus})
+                $("#value_type").change(function ()
+                {
+                    if ($(this).val() == 'html') {
+                        jqteStatus = true;
+                    } else {
+                        jqteStatus = false;
+                    }
+                    //jqteStatus = jqteStatus ? false : true;
+                    $('#fvalue.jqte-test').jqte({"status": jqteStatus})
                 });
             });
         </script>
