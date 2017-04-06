@@ -50,6 +50,7 @@ function get_unstall_webhook($shop, $token) {
                 $all_metafields = get_all_metafields($shopdata[0]['store_name'], $shopdata[0]['access_token']);
                 echo '<pre>';
                 print_r($all_metafields);
+                print_r($_SESSION);
                 echo '</pre>';
                 
                 ?>
