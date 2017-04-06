@@ -11,9 +11,6 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //}
 $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 $product = (array) json_decode($productjson);
-echo '<pre>';
-print_r($product['product']);
-echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +40,7 @@ echo '</pre>';
     </head>
     <body>
         <div class="container">
-            <h2>Metafields for <?php $product['product']->title ?></h2>
+            <h2>Metafields for <?php echo $product['product']->title ?></h2>
             <div class="row">
                 <div class="col-sm-3 col-md-3">
 
