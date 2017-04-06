@@ -49,7 +49,7 @@ if (!empty($_GET['shop'])) { //check if the shop name is passed in the URL
         if ($select_store->rowCount() > 0) {
 
             //$_SESSION['shopify_signature'] = $_GET['signature'];
-            $_SESSION['shop'] = $shop;
+           echo  $_SESSION['shop'] = $shop;
             header('Location: https://metafieldfy.herokuapp.com/shopify/admin.php'); //redirect to the admin page
         } else {
             //convert the permissions to an array
