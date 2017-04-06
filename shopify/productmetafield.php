@@ -23,6 +23,7 @@ $unstall_data_array = (array) json_decode($unstall_data);
         <script type="text/javascript" src="jquery-te-1.4.0.min.js" charset="utf-8"></script>
         <script type="text/javascript">
             $('document').ready(function(){
+                $('.jqte-test').jqte();
                 $("#value_type").change(function()
                 {       if($(this).val() == 'html'){
                             jqteStatus = true;
