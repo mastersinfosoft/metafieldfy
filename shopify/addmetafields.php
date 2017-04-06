@@ -22,7 +22,7 @@ require '../vendor/autoload.php';
             <div class="col-sm-9 col-md-9">
                 <?php 
                     $products = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token']);
-                    echo '<pre>';
+                    echo '<pre>weqwe';
                     print_r($products);
                     print_r($shopdata[0]);
                     echo '</pre>';
