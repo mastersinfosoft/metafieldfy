@@ -18,6 +18,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
         'key' => isset($_POST['key']) ? $_POST['key'] : '',
         'value_type' => isset($_POST['value_type']) ? ($_POST['value_type'] == 'html') ? 'string' : $_POST['value_type'] : '',
         'value' => isset($_POST['fvalue']) ? $_POST['fvalue'] : '',
+        'description' => isset($_POST['value_type']) ? $_POST['value_type'] : ''
     );
     $responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
     echo '<pre>';
@@ -29,8 +30,8 @@ $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['acces
 $metafields = json_decode($metafields_json);
 $count_metafield = count($metafields->metafields);
 $ourmetafield = array();
-for($i=0; $i<$count_metafield; $i++){
-    if($metafields->metafields[$i]->namespace == 'masterfields'){
+for ($i = 0; $i < $count_metafield; $i++) {
+    if ($metafields->metafields[$i]->namespace == 'masterfields') {
         $ourmetafield[] = $metafields->metafields[$i];
     }
 }
@@ -51,47 +52,83 @@ echo '</pre>';
         <script type="text/javascript" src="jquery-te-1.4.0.min.js" charset="utf-8"></script>
         <script type="text/javascript">
             $('document').ready(function () {
-                $('.jqte-test').jqte();
-                $("#value_type").change(function ()
+                //$('.jqte-test').jqte();
+                $("[id^=value_type_]").change(function ()
                 {
+                    ids = this.id;
+                    ids = ids.split('_');
+                    $('#fvalue_'+ids[2]).jqte();
                     if ($(this).val() == 'html') {
                         jqteStatus = true;
                     } else {
                         jqteStatus = false;
                     }
                     //jqteStatus = jqteStatus ? false : true;
-                    $('#fvalue.jqte-test').jqte({"status": jqteStatus})
+                    
+                    $('#fvalue_'+ids[2]).jqte({"status": jqteStatus})
                 });
             });
         </script>
     </head>
     <body>
         <div class="container">
-            <h2>Metafields for <?php echo $product['product']->title ?></h2>
+            <h2>Metafields for <?php echo $product['product']->title ?></h2> 
+            <a href="addmetafields.php" class="btn btn-primary" >Back</a>
             <div class="row">
-                <div class="col-sm-3 col-md-3">
 
-                    <?php include 'sidebar.php'; ?>
-                </div>
-                <div class="col-sm-9 col-md-9">
+                <div class="col-sm-12 col-md-12">
                     <form method="post" id="addmetafield" name="addmetafield">
                         <input type="hidden" value="masterfields" name="namespace">
-                        <div class="form-group">
-                            <label for="email">Key:</label>
-                            <input type="text" class="form-control" name="key" id="key">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Type:</label>
-                            <select type="text" class="form-control" name="value_type" id="value_type">
-                                <option value="html">Html</option>
-                                <option value="string">text</option>
-                                <option value="integer">Numbers</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Value:</label>
-                            <textarea class="form-control jqte-test" name="fvalue" id="fvalue"></textarea>
-                        </div>
+                        <?php
+                        if (count($ourmetafield) > 0) {
+                            ?>
+                            <fieldset>
+                                <legend>Update Existing Fields</legend>
+                                <?php
+                                foreach ($ourmetafield as $value) {
+                                    ?>
+                                    <div class="form-group">
+                                        <label for="email">Key:</label>
+                                        <input type="text" class="form-control" value="<?php echo $value->key ?>" name="key[<?php echo $value->id ?>]" id="key_<?php echo $value->id ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Type:</label>
+                                        <select type="text" class="form-control value_type" name="value_type[<?php echo $value->id ?>]" id="value_type_<?php echo $value->id ?>">
+                                            <option value="html">Html</option>
+                                            <option value="string">text</option>
+                                            <option value="integer">Numbers</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Value:</label>
+                                        <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </fieldset>
+                            <?php
+                        }
+                        ?>
+                        <fieldset>
+                            <legend>New Field</legend>
+                            <div class="form-group">
+                                <label for="email">Key:</label>
+                                <input type="text" class="form-control" name="key" id="key_new">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Type:</label>
+                                <select type="text" class="form-control" name="value_type" id="value_type_new">
+                                    <option value="html">Html</option>
+                                    <option value="string">text</option>
+                                    <option value="integer">Numbers</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Value:</label>
+                                <textarea class="form-control jqte-test" name="fvalue" id="fvalue_new"></textarea>
+                            </div>
+                        </fieldset>
                         <div class="form-group">
                             <input type="submit" name="submit" value="Add" class="btn btn-primary" />
                         </div>
