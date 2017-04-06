@@ -11,6 +11,11 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //}
 $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 $product = (array) json_decode($productjson);
+if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +71,7 @@ $product = (array) json_decode($productjson);
                             <textarea class="form-control jqte-test" name="fvalue" id="fvalue"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" value="Add" class="btn btn-primary"
+                            <input type="submit" name="$" value="Add" class="btn btn-primary"
                         </div>
                     </form>
                 </div>
