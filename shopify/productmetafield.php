@@ -19,6 +19,20 @@ $unstall_data_array = (array) json_decode($unstall_data);
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="jquery-te-1.4.0.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $('document').ready(function(){
+                $("#value_type").change(function()
+                {       if($(this).val() == 'html'){
+                            jqteStatus = true;
+                        }else{
+                            jqteStatus = false;
+                        }
+                        //jqteStatus = jqteStatus ? false : true;
+                        $('#fvalue').jqte({"status" : jqteStatus})
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container">
@@ -45,7 +59,7 @@ $unstall_data_array = (array) json_decode($unstall_data);
                         </div>
                         <div class="form-group">
                             <label for="email">Value:</label>
-                            <input type="text" class="form-control" name="fvalue" id="fvalue">
+                            <textarea class="form-control" name="fvalue" id="fvalue"></textarea>
                         </div>
                     </form>
                 </div>
