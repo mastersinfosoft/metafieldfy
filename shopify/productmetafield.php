@@ -52,7 +52,7 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
                     <?php include 'sidebar.php'; ?>
                 </div>
                 <div class="col-sm-9 col-md-9">
-                    <form method="post">
+                    <form method="post" id="addmetafield" name="addmetafield">
                         <input type="hidden" value="masterfields" name="namespace">
                         <div class="form-group">
                             <label for="email">Key:</label>
@@ -71,7 +71,7 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
                             <textarea class="form-control jqte-test" name="fvalue" id="fvalue"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="$" value="Add" class="btn btn-primary"
+                            <input type="submit" name="$" value="Add" class="btn btn-primary" />
                         </div>
                     </form>
                 </div>
