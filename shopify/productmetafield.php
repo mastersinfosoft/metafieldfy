@@ -21,10 +21,13 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Add'){
         
     );
     $responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
-}   echo '<pre>';
+    echo '<pre>';
     print_r($_POST);
     print_r($responce);
     echo '</pre>';
+} 
+$metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id']);
+$metafields = json_decode($metafields_json);
 ?>
 <!DOCTYPE html>
 <html>

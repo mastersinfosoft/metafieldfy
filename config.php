@@ -121,3 +121,15 @@ function add_metafield($shop, $token, $type, $id, $data=array()) {
     $result = curl_exec($ch);
     return $result;
 }
+function get_metafield($shop, $token, $type, $id) {
+    $url = 'https://' . $shop . '/admin/'.$type.'/'.$id.'/metafields.json';
+    $method = 'GET';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    //curl_setopt($s, CURLOPT_POST, true);
+    //curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
+    $result = curl_exec($ch);
+    return $result;
+}
