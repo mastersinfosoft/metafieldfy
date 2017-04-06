@@ -30,7 +30,7 @@ $unstall_data_array = (array) json_decode($unstall_data);
                             jqteStatus = false;
                         }
                         //jqteStatus = jqteStatus ? false : true;
-                        $('#fvalue').jqte({"status" : jqteStatus})
+                        $('#fvalue.jqte-test').jqte({"status" : jqteStatus})
                 });
             });
         </script>
@@ -60,7 +60,7 @@ $unstall_data_array = (array) json_decode($unstall_data);
                         </div>
                         <div class="form-group">
                             <label for="email">Value:</label>
-                            <textarea class="form-control" name="fvalue" id="fvalue"></textarea>
+                            <textarea class="form-control jqte-test" name="fvalue" id="fvalue"></textarea>
                         </div>
                     </form>
                 </div>
