@@ -21,7 +21,7 @@ require '../vendor/autoload.php';
 		</div>
             <div class="col-sm-9 col-md-9">
                 <?php 
-                    $products = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token']);
+                    $products = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], "id,images,title");
                     echo '<pre>weqwe';
                     print_r(json_decode($products));
                     echo '</pre>';

@@ -63,8 +63,11 @@ function get_unstall_webhook($shop, $token) {
     $result = curl_exec($ch);
     return $result;
 }
-function get_all_products($shop, $token) {
+function get_all_products($shop, $token, $fields='') {
     $url = 'https://' . $shop . '/admin/products.json';
+    if($fields != ''){
+        $url .= "?fields=".$fields;
+    }
     $method = 'GET';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
