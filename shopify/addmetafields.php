@@ -21,11 +21,25 @@ require '../vendor/autoload.php';
 		</div>
             <div class="col-sm-9 col-md-9">
                 <?php 
-                    $products = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], "id,images,title");
+                    $products_json = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], "id,images,title");
                     echo '<pre>weqwe';
-                    print_r(json_decode($products));
+                    print_r((array)json_decode($products_json));
                     echo '</pre>';
+                    $products = (array)json_decode($products_json);
                 ?>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr. No</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
             </div>
 	</div>
 </div>
