@@ -19,13 +19,13 @@ function get_unstall_webhook($shop, $token) {
     return $result;
 }
 
-$unstall_data = get_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']);
-$unstall_data_array = json_decode($unstall_data);
-if (!is_array($unstall_data_array)) {
-    $delete_query = "delete from tbl_usersettings where store_name = '" . $shop . "';";
-    $delete_store = $db->query($delete_query);
-    header("Location: https://metafieldfy.herokuapp.com/shopify_app.php");
-}
+//$unstall_data = get_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']);
+//$unstall_data_array = json_decode($unstall_data);
+//if (!is_array($unstall_data_array)) {
+//    $delete_query = "delete from tbl_usersettings where store_name = '" . $shop . "';";
+//    $delete_store = $db->query($delete_query);
+//    header("Location: https://metafieldfy.herokuapp.com/shopify_app.php");
+//}
 ?>
 <!DOCTYPE html>
 <html>
