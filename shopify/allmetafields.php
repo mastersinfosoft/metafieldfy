@@ -1,3 +1,7 @@
+<?php 
+include '../config.php';
+require '../vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +19,10 @@
 		<div class="col-sm-3 col-md-3">
 			<?php include 'sidebar.php';?>
 		</div>
-		<div class="col-sm-9 col-md-9"></div>
-		<div></div>
+            <div class="col-sm-9 col-md-9">
+                
+            </div>
+		
 	</div>
 </div>
 </body>

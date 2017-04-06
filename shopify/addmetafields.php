@@ -1,3 +1,7 @@
+<?php 
+include '../config.php';
+require '../vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +19,14 @@
 		<div class="col-sm-3 col-md-3">
 			<?php include 'sidebar.php';?>
 		</div>
-		<div class="col-sm-9 col-md-9"></div>
-		<div></div>
+            <div class="col-sm-9 col-md-9">
+                <?php 
+                    $products = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token']);
+                    echo '<pre>';
+                    print_r($products);
+                    echo '</pre>';
+                ?>
+            </div>
 	</div>
 </div>
 </body>
