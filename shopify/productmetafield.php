@@ -53,11 +53,16 @@ echo '</pre>';
         <script type="text/javascript">
             $('document').ready(function () {
                 //$('.jqte-test').jqte();
+                $("[id^=value_type_]").each(function(){
+                    ids = this.id;
+                    ids = ids.split('_');
+                    $('#fvalue_'+ids[2]).jqte();
+                });
                 $("[id^=value_type_]").change(function ()
                 {
                     ids = this.id;
                     ids = ids.split('_');
-                    $('#fvalue_'+ids[2]).jqte();
+                    
                     if ($(this).val() == 'html') {
                         jqteStatus = true;
                     } else {
