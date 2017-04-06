@@ -20,10 +20,10 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
         'value' => isset($_POST['fvalue']) ? $_POST['fvalue'] : '',
         'description' => isset($_POST['value_type']) ? $_POST['value_type'] : ''
     );
-    $responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
+    //$responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
     echo '<pre>';
     print_r($_POST);
-    print_r($responce);
+   // print_r($responce);
     echo '</pre>';
 }
 $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id']);
