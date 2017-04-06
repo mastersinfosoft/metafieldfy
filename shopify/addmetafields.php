@@ -26,7 +26,7 @@ require '../vendor/autoload.php';
                     print_r((array) json_decode($products_json));
                    
                     $products = (array) json_decode($products_json);
-                    print_r($products[0]);
+                    print_r($products['products']);
                     echo '</pre>';
                     ?>
                     <table class="table">
