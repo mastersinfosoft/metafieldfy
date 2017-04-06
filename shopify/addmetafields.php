@@ -24,6 +24,7 @@ require '../vendor/autoload.php';
                     $products = get_all_products($shopdata[0]['store_name'], $shopdata[0]['access_token']);
                     echo '<pre>';
                     print_r($products);
+                    print_r($shopdata[0]);
                     echo '</pre>';
                 ?>
             </div>
