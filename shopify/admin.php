@@ -33,7 +33,7 @@ require '../vendor/autoload.php';
                 $all_metafields = get_all_metafields($shopdata[0]['store_name'], $shopdata[0]['access_token']);
                 echo '<pre>';
                 print_r($all_metafields);
-                print_r($_SESSION);
+                print_r($shopdata[0]);
                 print_r(register_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']));
                 echo '</pre>';
                 
