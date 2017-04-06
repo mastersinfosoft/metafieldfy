@@ -65,6 +65,9 @@ $product = (array) json_decode($productjson);
                             <label for="email">Value:</label>
                             <textarea class="form-control jqte-test" name="fvalue" id="fvalue"></textarea>
                         </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" value="Add" class="btn btn-primary"
+                        </div>
                     </form>
                 </div>
                 <div></div>

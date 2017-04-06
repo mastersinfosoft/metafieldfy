@@ -42,7 +42,7 @@ require '../vendor/autoload.php';
                                 <td><?php echo ($i+1) ?></td>
                                 <td><?php echo $products['products'][$i]->title ?></td>
                                 <td><img width="100px" src="<?php echo $products['products'][$i]->images[0]->src ?>" alt="" /></td>
-                                <td><a href="productmetafield.php?id=<?php echo $products['products'][$i]->id ?>" class="btn btn-primery" >Add Metafield</a></td>
+                                <td><a href="productmetafield.php?id=<?php echo $products['products'][$i]->id ?>" class="btn btn-primary" >Add Metafield</a></td>
                             </tr>
                                     <?php
                             }
