@@ -25,6 +25,7 @@ require '../vendor/autoload.php';
                     echo '<pre>weqwe';
                     print_r($products);
                     print_r($shopdata[0]);
+                    print_r($_SESSION);
                     echo '</pre>';
                 ?>
             </div>
