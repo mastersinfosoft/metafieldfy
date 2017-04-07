@@ -45,7 +45,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
         foreach ($dataexisting as $mid => $data) {
             $res = update_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $mid, $data);
             echo '<pre>';
-            print_r($res);
+            print_r(json_decode($res));
             echo '</pre>';
         }
     }
@@ -65,9 +65,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
         $ourmetafield[] = $metafields->metafields[$i];
     }
 }
-echo '<pre>';
-print_r($ourmetafield);
-echo '</pre>';
+
 ?>
 <!DOCTYPE html>
 <html>
