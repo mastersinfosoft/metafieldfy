@@ -112,7 +112,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                     jConfirm('Are you sure??',  '', function(r) {
                         if (r == true) {                    
 
-                        }  
+                        });  
 }
                 }
             });
