@@ -24,13 +24,13 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
     $dataexisting = array();
     $namespace = $_POST['namespace'];
     foreach ($_POST['key'] as $key => $value) {
-        if($key != 'new'){
+        if ($key != 'new') {
             $dataexisting[$key]['metafield']['namespace'] = $namespace;
             $dataexisting[$key]['metafield']['key'] = $_POST['key'][$key];
             $dataexisting[$key]['metafield']['value_type'] = isset($_POST['value_type'][$key]) ? ($_POST['value_type'][$key] == 'html') ? 'string' : $_POST['value_type'][$key] : '';
             $dataexisting[$key]['metafield']['value'] = $_POST['fvalue'][$key];
             $dataexisting[$key]['metafield']['description'] = $_POST['value_type'][$key];
-        }else{
+        } else {
             $datanew['new']['metafield']['namespace'] = $namespace;
             $datanew['new']['metafield']['key'] = $_POST['key'][$key];
             $datanew['new']['metafield']['value_type'] = isset($_POST['value_type'][$key]) ? ($_POST['value_type'][$key] == 'html') ? 'string' : $_POST['value_type'][$key] : '';
@@ -39,6 +39,16 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
         }
     }
     //$responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
+    if (count($dataexisting) > 0) {
+        foreach ($dataexisting as $mid => $data) {
+            update_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $mid, $data);
+        }
+    }
+     if (count($datanew) > 0) {
+        foreach ($datanew as $mid => $data) {
+            add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
+        }
+    }
     echo '<pre>';
     print_r($_POST);
     print_r($dataexisting);
@@ -72,24 +82,24 @@ echo '</pre>';
         <script type="text/javascript">
             $('document').ready(function () {
                 //$('.jqte-test').jqte();
-                $("[id^=value_type_]").each(function(){
+                $("[id^=value_type_]").each(function () {
                     ids = this.id;
                     ids = ids.split('_');
-                    $('#fvalue_'+ids[2]).jqte();
+                    $('#fvalue_' + ids[2]).jqte();
                 });
                 $("[id^=value_type_]").change(function ()
                 {
                     ids = this.id;
                     ids = ids.split('_');
-                    
+
                     if ($(this).val() == 'html') {
                         jqteStatus = true;
                     } else {
                         jqteStatus = false;
                     }
                     //jqteStatus = jqteStatus ? false : true;
-                    
-                    $('#fvalue_'+ids[2]).jqte({"status": jqteStatus})
+
+                    $('#fvalue_' + ids[2]).jqte({"status": jqteStatus})
                 });
             });
         </script>
