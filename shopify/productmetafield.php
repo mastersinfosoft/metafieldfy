@@ -11,7 +11,7 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //}
 $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 $product = (array) json_decode($productjson);
-if(isset($_GET['mid']) && $_GET['mid'] != ''){
+if (isset($_GET['mid']) && $_GET['mid'] != '') {
     $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $_GET['mid']);
 }
 if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
@@ -54,7 +54,6 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
             add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data['metafield']);
         }
     }
-   
 }
 $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id']);
 $metafields = json_decode($metafields_json);
@@ -87,7 +86,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                     ids = this.id;
                     ids = ids.split('_');
                     $('#fvalue_' + ids[2]).jqte();
-                    if($(this).val() != 'html'){
+                    if ($(this).val() != 'html') {
                         jqteStatus = false;
                         $('#fvalue_' + ids[2]).jqte({"status": jqteStatus})
                     }
@@ -106,19 +105,19 @@ for ($i = 0; $i < $count_metafield; $i++) {
 
                     $('#fvalue_' + ids[2]).jqte({"status": jqteStatus})
                 });
-                function deletefield(url){
+                function deletefield(url) {
                     jQuery.alerts.okButton = 'Yes';
-                    jQuery.alerts.cancelButton = 'No';                  
-                    jConfirm('Are you sure??',  '', function(r) {
-                        if (r == true) {                    
+                    jQuery.alerts.cancelButton = 'No';
+                    jConfirm('Are you sure??', '', function (r) {
+                        if (r == true) {
 
                         }
                     });
                 }
-                      
-}
-                
-            });
+
+            }
+
+            );
         </script>
     </head>
     <body>
@@ -138,34 +137,40 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                 <?php
                                 foreach ($ourmetafield as $value) {
                                     ?>
-                                <div class="container well">
-                                    <div class="form-group">
-                                        <a href="javascript:deletefield('productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->id ?>')" class="btn btn-danger pull-right">Delete</a>
+                                    <div class="container well">
+                                        <div class="form-group">
+                                            <a href="javascript:deletefield('productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->id ?>')" class="btn btn-danger pull-right">Delete</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Key:</label>
+                                            <input type="text" class="form-control" value="<?php echo $value->key ?>" name="key[<?php echo $value->id ?>]" id="key_<?php echo $value->id ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Type:</label>
+                                            <select type="text" class="form-control value_type" name="value_type[<?php echo $value->id ?>]" id="value_type_<?php echo $value->id ?>">
+                                                <option value="html" <?php if (trim($value->description) == 'html') {
+                                echo 'selected="selected"';
+                            } ?> >Html</option>
+                                                <option value="string" <?php if (trim($value->description) == 'string') {
+                                echo 'selected="selected"';
+                            } ?> >text</option>
+                                                <option value="integer" <?php if (trim($value->description) == 'integer') {
+                                echo 'selected="selected"';
+                            } ?> >Numbers</option>
+                                            </select> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Value:</label>
+                                            <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email">Key:</label>
-                                        <input type="text" class="form-control" value="<?php echo $value->key ?>" name="key[<?php echo $value->id ?>]" id="key_<?php echo $value->id ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Type:</label>
-                                        <select type="text" class="form-control value_type" name="value_type[<?php echo $value->id ?>]" id="value_type_<?php echo $value->id ?>">
-                                            <option value="html" <?php if(trim($value->description)=='html'){ echo 'selected="selected"'; } ?> >Html</option>
-                                            <option value="string" <?php if(trim($value->description)=='string'){ echo 'selected="selected"'; } ?> >text</option>
-                                            <option value="integer" <?php if(trim($value->description)=='integer'){ echo 'selected="selected"'; } ?> >Numbers</option>
-                                        </select> 
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Value:</label>
-                                        <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
-                                    </div>
-                                </div>
-                                    <?php
-                                }
-                                ?>
+                                <?php
+                            }
+                            ?>
                             </fieldset>
-                            <?php
-                        }
-                        ?>
+    <?php
+}
+?>
                         <fieldset>
                             <legend>New Field</legend>
                             <div class="form-group">
