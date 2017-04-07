@@ -20,7 +20,7 @@ require '../vendor/autoload.php';
 			<?php include 'sidebar.php';?>
 		</div>
             <div class="col-sm-9 col-md-9">
-                
+                <h2>Comming Soon</h2>
             </div>
 		
 	</div>
