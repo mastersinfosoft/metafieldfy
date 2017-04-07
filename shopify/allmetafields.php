@@ -9,8 +9,8 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //    $delete_store = $db->query($delete_query);
 //    header("Location: https://metafieldfy.herokuapp.com/shopify_app.php");
 //}
-$productjson = get_shop($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
-$product = (array) json_decode($productjson);
+//$productjson = get_shop($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
+//$product = (array) json_decode($productjson);
 if (isset($_GET['mid']) && $_GET['mid'] != '') {
     $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id'], $_GET['mid']);
 }
