@@ -145,7 +145,7 @@ function update_metafield($shop, $token, $type, $pid, $mid,$data) {
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
-    // Make the REST call, returning the result
+    // Make the REST call, returning the result 
     $result = curl_exec($ch);
     return $result;
 }
