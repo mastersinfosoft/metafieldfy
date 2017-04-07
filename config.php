@@ -154,7 +154,7 @@ function delete_metafield($shop, $token, $type, $pid, $mid) {
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "delete");
     curl_setopt($ch, CURLOPT_HEADER, false);
-    //curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
     //curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
