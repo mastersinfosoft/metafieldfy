@@ -133,3 +133,18 @@ function get_metafield($shop, $token, $type, $id) {
     $result = curl_exec($ch);
     return $result;
 }
+function update_metafield($shop, $token, $type, $pid, $mid,$data) {
+    $url = 'https://' . $shop . '/admin/'.$type.'/'.$pid.'/metafields/'.$mid.'.json';
+    $method = 'GET';
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+
+    // Make the REST call, returning the result
+    $result = curl_exec($ch);
+    return $result;
+}
