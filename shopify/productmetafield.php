@@ -112,7 +112,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
     <body>
         <div class="container">
             <h2>Metafields for <?php echo $product['product']->title ?></h2> 
-            <a href="addmetafields.php" class="btn btn-primary" >Back</a>
+            <a href="addmetafields.php" class="btn btn-primary pull-right" >Back</a>
             <div class="row">
 
                 <div class="col-sm-12 col-md-12">
@@ -128,7 +128,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                     ?>
                                 <div class="container well">
                                     <div class="form-group">
-                                        <a href="productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->key ?>" class="btn btn-danger">Delete</a>
+                                        <a href="productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->key ?>" class="btn btn-danger pull-right">Delete</a>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Key:</label>
