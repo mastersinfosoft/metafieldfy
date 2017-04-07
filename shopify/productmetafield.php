@@ -113,9 +113,11 @@ for ($i = 0; $i < $count_metafield; $i++) {
                         if (r == true) {                    
 
                         }
-                    });  
-}
+                    });
                 }
+                      
+}
+                
             });
         </script>
     </head>
