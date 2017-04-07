@@ -126,9 +126,9 @@ echo '</pre>';
                                     <div class="form-group">
                                         <label for="email">Type:</label>
                                         <select type="text" class="form-control value_type" name="value_type[<?php echo $value->id ?>]" id="value_type_<?php echo $value->id ?>">
-                                            <option value="html">Html</option>
-                                            <option value="string">text</option>
-                                            <option value="integer">Numbers</option>
+                                            <option value="html" <?php if(trim($value->description)=='html'){ echo 'selected="selected"'; } ?> >Html</option>
+                                            <option value="string" <?php if(trim($value->description)=='string'){ echo 'selected="selected"'; } ?> >text</option>
+                                            <option value="integer" <?php if(trim($value->description)=='integer'){ echo 'selected="selected"'; } ?> >Numbers</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
