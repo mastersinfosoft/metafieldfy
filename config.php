@@ -152,7 +152,7 @@ function delete_metafield($shop, $token, $type, $pid, $mid) {
     echo $url = 'https://' . $shop . '/admin/'.$type.'/'.$pid.'/metafields/'.$mid.'.json';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "delete");
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
