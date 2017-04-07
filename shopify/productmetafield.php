@@ -20,11 +20,29 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
         'value' => isset($_POST['fvalue']) ? $_POST['fvalue'] : '',
         'description' => isset($_POST['value_type']) ? $_POST['value_type'] : ''
     );
-    
+    $datanew = array();
+    $dataexisting = array();
+    $namespace = $_POST['namespace'];
+    foreach ($_POST['key'] as $key => $value) {
+        if($key != 'new'){
+            $dataexisting[$key]['namespace'] = $namespace;
+            $dataexisting[$key]['key'] = $_POST['key'][$key];
+            $dataexisting[$key]['value_type'] = isset($_POST['value_type'][$key]) ? ($_POST['value_type'][$key] == 'html') ? 'string' : $_POST['value_type'][$key] : '';
+            $dataexisting[$key]['value'] = $_POST['fvalue'][$key];
+            $dataexisting[$key]['description'] = $_POST['value_type'][$key];
+        }else{
+            $datanew['new']['namespace'] = $namespace;
+            $datanew['new']['key'] = $_POST['key'][$key];
+            $datanew['new']['value_type'] = isset($_POST['value_type'][$key]) ? ($_POST['value_type'][$key] == 'html') ? 'string' : $_POST['value_type'][$key] : '';
+            $datanew['new']['value'] = $_POST['fvalue'][$key];
+            $datanew['new']['description'] = $_POST['value_type'][$key];
+        }
+    }
     //$responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
     echo '<pre>';
     print_r($_POST);
-   // print_r($responce);
+    print_r($dataexisting);
+    print_r($datanew);
     echo '</pre>';
 }
 $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id']);
