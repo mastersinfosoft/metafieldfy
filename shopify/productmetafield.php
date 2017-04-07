@@ -111,13 +111,12 @@ for ($i = 0; $i < $count_metafield; $i++) {
 
             );
             function deletefield(url) {
-                jQuery.alerts.okButton = 'Yes';
-                jQuery.alerts.cancelButton = 'No';
-                jConfirm('Are you sure??', '', function (r) {
-                    if (r == true) {
-
-                    }
-                });
+                var r = confirm("are you want to delele Metafield?");
+                if (r == true) {
+                    location.href = url;
+                } else {
+                    //txt = "You pressed Cancel!";
+                }
             }
         </script>
     </head>
@@ -171,13 +170,13 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                             <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
                                         </div>
                                     </div>
-                                <?php
-                            }
-                            ?>
+                                    <?php
+                                }
+                                ?>
                             </fieldset>
-    <?php
-}
-?>
+                            <?php
+                        }
+                        ?>
                         <fieldset>
                             <legend>New Field</legend>
                             <div class="form-group">
