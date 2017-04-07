@@ -169,6 +169,9 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                             <label for="email">Value:</label>
                                             <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
                                         </div>
+                                        <div class="alert alert-info">
+                                            <strong>Info!</strong> Indicates a neutral informative change or action.
+                                        </div>
                                     </div>
                                     <?php
                                 }
