@@ -170,7 +170,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                             <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
                                         </div>
                                         <div class="alert alert-info">
-                                            <strong>Info!</strong> Indicates a neutral informative change or action.
+                                            <strong>Info!</strong> TO show on the product page please put following code on the product details page {{product.metafields.masterfields.<?php echo $value->key ?>}}
                                         </div>
                                     </div>
                                     <?php
