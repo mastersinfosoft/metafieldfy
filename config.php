@@ -113,9 +113,9 @@ function get_products($shop, $token, $id, $fields = '') {
 function add_metafield($shop, $token, $type, $id, $data = array()) {
     $url = 'https://' . $shop . '/admin/';
     if ($type != "shop") {
-        $url .= $type . '/';
+        $url .= $type . '/'.$id . '/';
     }
-    $url .= $id . '/metafields.json';
+    $url .= 'metafields.json';
     $method = 'POST';
     $params = array('metafield' => $data);
     $data_string = json_encode($params);
@@ -131,7 +131,11 @@ function add_metafield($shop, $token, $type, $id, $data = array()) {
 }
 
 function get_metafield($shop, $token, $type, $id) {
-    $url = 'https://' . $shop . '/admin/' . $type . '/' . $id . '/metafields.json';
+    $url = 'https://' . $shop . '/admin/';
+    if ($type != "shop") {
+        $url .= $type . '/'.$id . '/';
+    }
+    $url .= 'metafields.json';
     $method = 'GET';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -144,7 +148,12 @@ function get_metafield($shop, $token, $type, $id) {
 }
 
 function update_metafield($shop, $token, $type, $pid, $mid, $data) {
-    $url = 'https://' . $shop . '/admin/' . $type . '/' . $pid . '/metafields/' . $mid . '.json';
+    //$url = 'https://' . $shop . '/admin/' . $type . '/' . $pid . '/metafields/' . $mid . '.json';
+    $url = 'https://' . $shop . '/admin/';
+    if ($type != "shop") {
+        $url .= $type . '/'.$id . '/';
+    }
+    $url .= 'metafields' . $mid . '.json';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -160,7 +169,12 @@ function update_metafield($shop, $token, $type, $pid, $mid, $data) {
 }
 
 function delete_metafield($shop, $token, $type, $pid, $mid) {
-    $url = 'https://' . $shop . '/admin/' . $type . '/' . $pid . '/metafields/' . $mid . '.json';
+    //$url = 'https://' . $shop . '/admin/' . $type . '/' . $pid . '/metafields/' . $mid . '.json';
+    $url = 'https://' . $shop . '/admin/';
+    if ($type != "shop") {
+        $url .= $type . '/'.$id . '/';
+    }
+    $url .= 'metafields' . $mid . '.json';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
