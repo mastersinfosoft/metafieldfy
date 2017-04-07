@@ -31,29 +31,30 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
             $dataexisting[$key]['metafield']['value'] = $_POST['fvalue'][$key];
             $dataexisting[$key]['metafield']['description'] = $_POST['value_type'][$key];
         } else {
-            $datanew['new']['metafield']['namespace'] = $namespace;
-            $datanew['new']['metafield']['key'] = $_POST['key'][$key];
-            $datanew['new']['metafield']['value_type'] = isset($_POST['value_type'][$key]) ? ($_POST['value_type'][$key] == 'html') ? 'string' : $_POST['value_type'][$key] : '';
-            $datanew['new']['metafield']['value'] = $_POST['fvalue'][$key];
-            $datanew['new']['metafield']['description'] = $_POST['value_type'][$key];
+            if ($_POST['key'][$key] != '') {
+                $datanew['new']['metafield']['namespace'] = $namespace;
+                $datanew['new']['metafield']['key'] = $_POST['key'][$key];
+                $datanew['new']['metafield']['value_type'] = isset($_POST['value_type'][$key]) ? ($_POST['value_type'][$key] == 'html') ? 'string' : $_POST['value_type'][$key] : '';
+                $datanew['new']['metafield']['value'] = $_POST['fvalue'][$key];
+                $datanew['new']['metafield']['description'] = $_POST['value_type'][$key];
+            }
         }
     }
     //$responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
     if (count($dataexisting) > 0) {
         foreach ($dataexisting as $mid => $data) {
-            update_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $mid, $data);
+            $res = update_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $mid, $data);
+            echo '<pre>';
+            print_r($res);
+            echo '</pre>';
         }
     }
-     if (count($datanew) > 0) {
+    if (count($datanew) > 0) {
         foreach ($datanew as $mid => $data) {
             add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data['metafield']);
         }
     }
-    echo '<pre>';
-    print_r($_POST);
-    print_r($dataexisting);
-    print_r($datanew);
-    echo '</pre>';
+   
 }
 $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id']);
 $metafields = json_decode($metafields_json);
