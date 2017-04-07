@@ -44,9 +44,6 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
     if (count($dataexisting) > 0) {
         foreach ($dataexisting as $mid => $data) {
             $res = update_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $mid, $data);
-            echo '<pre>';
-            //print_r(json_decode($res));
-            echo '</pre>';
         }
     }
     if (count($datanew) > 0) {
