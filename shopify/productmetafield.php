@@ -129,7 +129,7 @@ echo '</pre>';
                                             <option value="html" <?php if(trim($value->description)=='html'){ echo 'selected="selected"'; } ?> >Html</option>
                                             <option value="string" <?php if(trim($value->description)=='string'){ echo 'selected="selected"'; } ?> >text</option>
                                             <option value="integer" <?php if(trim($value->description)=='integer'){ echo 'selected="selected"'; } ?> >Numbers</option>
-                                        </select>
+                                        </select> 
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Value:</label>
