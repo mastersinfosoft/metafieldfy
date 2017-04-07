@@ -84,6 +84,10 @@ echo '</pre>';
                     ids = this.id;
                     ids = ids.split('_');
                     $('#fvalue_' + ids[2]).jqte();
+                    if($(this).val() != 'html'){
+                        jqteStatus = false;
+                        $('#fvalue_' + ids[2]).jqte({"status": jqteStatus})
+                    }
                 });
                 $("[id^=value_type_]").change(function ()
                 {
