@@ -62,9 +62,9 @@ for ($i = 0; $i < $count_metafield; $i++) {
         $ourmetafield[] = $metafields->metafields[$i];
     }
 }
-echo '<pre>';
-print_r($ourmetafield);
-echo '</pre>';
+//echo '<pre>';
+//print_r($ourmetafield);
+//echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
