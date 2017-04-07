@@ -123,7 +123,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                 <?php
                                 foreach ($ourmetafield as $value) {
                                     ?>
-                                <div class="container">
+                                <div class="container well">
                                     <div class="form-group">
                                         <label for="email">Key:</label>
                                         <input type="text" class="form-control" value="<?php echo $value->key ?>" name="key[<?php echo $value->id ?>]" id="key_<?php echo $value->id ?>">
