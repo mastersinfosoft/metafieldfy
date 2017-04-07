@@ -31,14 +31,16 @@ $unstall_data_array = (array)json_decode($unstall_data);
 		<div class="col-sm-9 col-md-9">
 		<?php 
                 $all_metafields = get_all_metafields($shopdata[0]['store_name'], $shopdata[0]['access_token']);
-                echo '<pre>';
-                print_r($all_metafields);
-                print_r($unstall_data_array);
+                //echo '<pre>';
+                //print_r($all_metafields);
+                //print_r($unstall_data_array);
                 //print_r(register_unstall_webhook($shopdata[0]['store_name'], $shopdata[0]['access_token']));
-                echo '</pre>';
+                //echo '</pre>';
                 
                 ?>
-			
+                    <h1>Welcome to Metafieldfy</h1>
+                    <p>Create information as you want</p>
+                    <button type="button" class="btn btn-success">Hire Us</button>
 		</div>
 		<div></div>
 	</div>
