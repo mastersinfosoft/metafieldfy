@@ -142,11 +142,11 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                             <a href="javascript:deletefield('productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->id ?>')" class="btn btn-danger pull-right">Delete</a>
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Key:</label>
+                                            <label for="email">Key :</label>
                                             <input type="text" class="form-control" value="<?php echo $value->key ?>" name="key[<?php echo $value->id ?>]" id="key_<?php echo $value->id ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Type:</label>
+                                            <label for="email">Type :</label>
                                             <select type="text" class="form-control value_type" name="value_type[<?php echo $value->id ?>]" id="value_type_<?php echo $value->id ?>">
                                                 <option value="html" <?php
                                                 if (trim($value->description) == 'html') {
@@ -166,7 +166,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                             </select> 
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Value:</label>
+                                            <label for="email">Value :</label>
                                             <textarea class="form-control jqte-test" name="fvalue[<?php echo $value->id ?>]" id="fvalue_<?php echo $value->id ?>"><?php echo $value->value ?></textarea>
                                         </div>
                                         <div class="alert alert-info">
@@ -183,11 +183,11 @@ for ($i = 0; $i < $count_metafield; $i++) {
                         <fieldset>
                             <legend>New Field</legend>
                             <div class="form-group">
-                                <label for="email">Key:</label>
+                                <label for="email">Key :</label>
                                 <input type="text" class="form-control" name="key[new]" id="key_new">
                             </div>
                             <div class="form-group">
-                                <label for="email">Type:</label>
+                                <label for="email">Type :</label>
                                 <select type="text" class="form-control" name="value_type[new]" id="value_type_new">
                                     <option value="html">Html</option>
                                     <option value="string">text</option>
@@ -195,7 +195,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="email">Value:</label>
+                                <label for="email">Value :</label>
                                 <textarea class="form-control jqte-test" name="fvalue[new]" id="fvalue_new"></textarea>
                             </div>
                         </fieldset>
