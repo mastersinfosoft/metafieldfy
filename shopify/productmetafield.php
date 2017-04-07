@@ -11,7 +11,10 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //}
 $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 $product = (array) json_decode($productjson);
-if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
+if(isset($_GET['mid']) && $_GET['mid'] != ''){
+    $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $_GET['mid']);
+}
+if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
 
     $data = array(
         'namespace' => isset($_POST['namespace']) ? $_POST['namespace'] : '',
@@ -125,6 +128,9 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                     ?>
                                 <div class="container well">
                                     <div class="form-group">
+                                        <a href="productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->key ?>" class="btn btn-danger">Delete</a>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="email">Key:</label>
                                         <input type="text" class="form-control" value="<?php echo $value->key ?>" name="key[<?php echo $value->id ?>]" id="key_<?php echo $value->id ?>">
                                     </div>
@@ -168,7 +174,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                             </div>
                         </fieldset>
                         <div class="form-group">
-                            <input type="submit" name="submit" value="Add" class="btn btn-primary" />
+                            <input type="submit" name="submit" value="Save" class="btn btn-primary" />
                         </div>
                     </form>
                 </div>
