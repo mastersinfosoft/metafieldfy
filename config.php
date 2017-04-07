@@ -140,9 +140,10 @@ function update_metafield($shop, $token, $type, $pid, $mid,$data) {
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
     curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($s, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'X-Shopify-Access-Token: ' . $token));
-    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
 
     // Make the REST call, returning the result
     $result = curl_exec($ch);
