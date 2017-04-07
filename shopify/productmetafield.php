@@ -13,6 +13,9 @@ $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_tok
 $product = (array) json_decode($productjson);
 if(isset($_GET['mid']) && $_GET['mid'] != ''){
     $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $_GET['mid']);
+    echo '<pre>';
+    print_r($delete_responce);
+    echo '</pre>';
 }
 if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
 
