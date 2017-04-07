@@ -13,9 +13,6 @@ $productjson = get_products($shopdata[0]['store_name'], $shopdata[0]['access_tok
 $product = (array) json_decode($productjson);
 if(isset($_GET['mid']) && $_GET['mid'] != ''){
     $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $_GET['mid']);
-    echo '<pre>';
-    print_r($delete_responce);
-    echo '</pre>';
 }
 if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
 
@@ -109,6 +106,15 @@ for ($i = 0; $i < $count_metafield; $i++) {
 
                     $('#fvalue_' + ids[2]).jqte({"status": jqteStatus})
                 });
+                function deletefield(url){
+                    jQuery.alerts.okButton = 'Yes';
+                    jQuery.alerts.cancelButton = 'No';                  
+                    jConfirm('Are you sure??',  '', function(r) {
+                        if (r == true) {                    
+
+                        }  
+}
+                }
             });
         </script>
     </head>
@@ -131,7 +137,7 @@ for ($i = 0; $i < $count_metafield; $i++) {
                                     ?>
                                 <div class="container well">
                                     <div class="form-group">
-                                        <a href="productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->id ?>" class="btn btn-danger pull-right">Delete</a>
+                                        <a href="javascript:deletefield('productmetafield.php?id=<?php echo $_GET['id'] ?>&mid=<?php echo $value->id ?>')" class="btn btn-danger pull-right">Delete</a>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Key:</label>
