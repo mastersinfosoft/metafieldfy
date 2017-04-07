@@ -46,7 +46,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Add') {
     }
      if (count($datanew) > 0) {
         foreach ($datanew as $mid => $data) {
-            add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data);
+            add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'products', $_GET['id'], $data['metafield']);
         }
     }
     echo '<pre>';
