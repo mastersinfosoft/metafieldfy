@@ -174,7 +174,7 @@ function delete_metafield($shop, $token, $type, $pid, $mid) {
     //$url = 'https://' . $shop . '/admin/' . $type . '/' . $pid . '/metafields/' . $mid . '.json';
     $url = 'https://' . $shop . '/admin/';
     if ($type != "shop") {
-        $url .= $type . '/'.$id . '/';
+        $url .= $type . '/'. $pid . '/';
     }
     $url .= 'metafields' . $mid . '.json';
     $ch = curl_init();

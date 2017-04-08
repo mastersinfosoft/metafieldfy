@@ -12,7 +12,7 @@ $unstall_data_array = (array) json_decode($unstall_data);
 //$productjson = get_shop($shopdata[0]['store_name'], $shopdata[0]['access_token'], $_GET['id'], "id,images,title");
 //$product = (array) json_decode($productjson);
 if (isset($_GET['mid']) && $_GET['mid'] != '') {
-    $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id'], $_GET['mid']);
+    $delete_responce = delete_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', '', $_GET['mid']);
 }
 if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
 
