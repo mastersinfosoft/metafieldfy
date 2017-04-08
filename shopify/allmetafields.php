@@ -65,11 +65,11 @@ $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['acces
 $metafields = json_decode($metafields_json);
 $count_metafield = count($metafields->metafields);
 $ourmetafield = array();
-//for ($i = 0; $i < $count_metafield; $i++) {
-//    if ($metafields->metafields[$i]->namespace == 'masterfields') {
-//        $ourmetafield[] = $metafields->metafields[$i];
-//    }
-//}
+for ($i = 0; $i < $count_metafield; $i++) {
+    if ($metafields->metafields[$i]->namespace == 'masterfields') {
+        $ourmetafield[] = $metafields->metafields[$i];
+    }
+}
 echo '<pre>';
 print_r($ourmetafield);
 print_r($metafields_json);
