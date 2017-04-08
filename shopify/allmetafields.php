@@ -43,6 +43,9 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
             }
         }
     }
+    echo '<pre>';
+    print_r($datanew);
+    echo '</pre>';
     //$responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id'], $data);
     if (count($dataexisting) > 0) {
         foreach ($dataexisting as $mid => $data) {
