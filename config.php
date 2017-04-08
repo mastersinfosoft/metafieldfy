@@ -116,6 +116,7 @@ function add_metafield($shop, $token, $type, $id, $data = array()) {
         $url .= $type . '/'.$id . '/';
     }
     $url .= 'metafields.json';
+    echo $url;
     $method = 'POST';
     $params = array('metafield' => $data);
     $data_string = json_encode($params);
