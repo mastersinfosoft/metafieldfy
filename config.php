@@ -131,7 +131,7 @@ function add_metafield($shop, $token, $type, $id, $data = array()) {
     return $result;
 }
 
-function get_metafield($shop, $token, $type, $id) {
+function get_metafield($shop, $token, $type, $id='') {
     $url = 'https://' . $shop . '/admin/';
     if ($type != "shop") {
         $url .= $type . '/'.$id . '/';

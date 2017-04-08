@@ -61,7 +61,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
     echo '</pre>';
 }
 print_r($shopdata);
-$metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id']);
+$metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop');
 $metafields = json_decode($metafields_json);
 $count_metafield = count($metafields->metafields);
 $ourmetafield = array();
