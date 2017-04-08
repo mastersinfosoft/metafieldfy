@@ -43,9 +43,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
             }
         }
     }
-    echo '<pre>';
-    print_r($datanew);
-    echo '</pre>';
+
     //$responce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id'], $data);
     if (count($dataexisting) > 0) {
         foreach ($dataexisting as $mid => $data) {
@@ -54,9 +52,13 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Save') {
     }
     if (count($datanew) > 0) {
         foreach ($datanew as $mid => $data) {
-            add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id'], $data['metafield']);
+            $addreponce = add_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id'], $data['metafield']);
         }
     }
+    echo '<pre>';
+    print_r($datanew);
+    print_r($addreponce);
+    echo '</pre>';
 }
 $metafields_json = get_metafield($shopdata[0]['store_name'], $shopdata[0]['access_token'], 'shop', $_GET['id']);
 $metafields = json_decode($metafields_json);
