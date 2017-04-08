@@ -70,10 +70,10 @@ for ($i = 0; $i < $count_metafield; $i++) {
         $ourmetafield[] = $metafields->metafields[$i];
     }
 }
-echo '<pre>';
-print_r($ourmetafield);
-print_r($metafields_json);
-echo '</pre>';
+//echo '<pre>';
+//print_r($ourmetafield);
+//print_r($metafields_json);
+//echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>

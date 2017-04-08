@@ -137,7 +137,7 @@ function get_metafield($shop, $token, $type, $id='') {
         $url .= $type . '/'.$id . '/';
     }
     $url .= 'metafields.json';
-    echo $url;
+    //echo $url;
     $method = 'GET';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
