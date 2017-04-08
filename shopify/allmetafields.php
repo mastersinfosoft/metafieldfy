@@ -72,6 +72,7 @@ $ourmetafield = array();
 //}
 echo '<pre>';
 print_r($ourmetafield);
+print_r($metafields_json);
 echo '</pre>';
 ?>
 <!DOCTYPE html>
